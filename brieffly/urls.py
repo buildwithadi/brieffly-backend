@@ -5,6 +5,8 @@ from rest_framework.authtoken.views import obtain_auth_token
 from users.views import RegisterView
 from projects.views import ProjectViewSet, QuestionViewSet, PublicProjectView
 from responses.views import SubmitResponseView
+from django.http import HttpResponse
+from .views import home
 
 # Create a router for our ViewSets
 router = DefaultRouter()
@@ -13,6 +15,8 @@ router.register(r'questions', QuestionViewSet, basename='question')
 
 urlpatterns = [
     # Admin Panel
+    path('',home),
+
     path('admin/', admin.site.urls),
 
     # Authentication Endpoints
